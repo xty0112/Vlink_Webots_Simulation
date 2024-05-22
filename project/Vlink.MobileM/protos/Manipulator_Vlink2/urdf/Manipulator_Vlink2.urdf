@@ -1,0 +1,1054 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="Manipulator_Vlink2">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="7.26897419825618E-18 3.64890254428675E-18 -2.4772664067657E-18"
+        rpy="0 0 0" />
+      <mass
+        value="4.563502045004" />
+      <inertia
+        ixx="0.0280984473320404"
+        ixy="7.92285736359658E-17"
+        ixz="4.9277286577983E-20"
+        iyy="0.0169477927066625"
+        iyz="1.08880015646914E-18"
+        izz="0.0376783082336192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="hip2thigh_lf">
+    <inertial>
+      <origin
+        xyz="6.17638775413905E-18 -0.0614074661588189 -0.00575000000000156"
+        rpy="0 0 0" />
+      <mass
+        value="0.0599999613849592" />
+      <inertia
+        ixx="0.000155906508351339"
+        ixy="2.94476214864048E-21"
+        ixz="-9.35046804636312E-21"
+        iyy="1.13512134874171E-05"
+        iyz="-7.895302478684E-19"
+        izz="0.000165935222689896" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_lf"
+    type="continuous">
+    <origin
+      xyz="0.0424247110394242 0.156999999999999 0"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_lf">
+    <inertial>
+      <origin
+        xyz="0 -0.10564758516642 -0.00575000000000064"
+        rpy="0 0 0" />
+      <mass
+        value="0.0763000411167859" />
+      <inertia
+        ixx="0.000437218386664755"
+        ixy="3.9387032047325E-20"
+        ixz="1.95072209959967E-20"
+        iyy="7.44363321133751E-06"
+        iyz="1.46010727006436E-18"
+        izz="0.000442980239803143" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 -0.011500000000001"
+      rpy="0 0 -2.46746214692248" />
+    <parent
+      link="hip2thigh_lf" />
+    <child
+      link="thigh2leg_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_lf">
+    <inertial>
+      <origin
+        xyz="6.41847686111419E-17 -8.32667268468867E-17 0.0207499999999986"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.000441450058332931"
+        ixy="-5.0821976835258E-21"
+        ixz="2.07466425242616E-18"
+        iyy="0.000441450058332931"
+        iyz="-3.38231691806901E-20"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 0.827377338905804" />
+    <parent
+      link="thigh2leg_lf" />
+    <child
+      link="leg2wheel_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="hip2thigh_lb">
+    <inertial>
+      <origin
+        xyz="-2.49919468130297E-18 -0.061407466158819 -0.0057500000000007"
+        rpy="0 0 0" />
+      <mass
+        value="0.0539995474696858" />
+      <inertia
+        ixx="0.000140314771946862"
+        ixy="-7.37238832554498E-21"
+        ixz="6.14097015851312E-21"
+        iyy="1.02160131007346E-05"
+        iyz="6.95261465638179E-19"
+        izz="0.000149340545022119" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_lb"
+    type="continuous">
+    <origin
+      xyz="-0.0525752889605756 0.126999999999999 0"
+      rpy="1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_lb">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.126725289376484 0.00574999999999845"
+        rpy="0 0 0" />
+      <mass
+        value="0.0750000161747868" />
+      <inertia
+        ixx="0.000553987900915235"
+        ixy="-6.69156028330897E-20"
+        ixz="1.65162413828475E-20"
+        iyy="9.43756802822456E-06"
+        iyz="-3.30067017119004E-18"
+        izz="0.00056177234358694" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0"
+      rpy="0 0 2.46746214692248" />
+    <parent
+      link="hip2thigh_lb" />
+    <child
+      link="thigh2leg_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_lb">
+    <inertial>
+      <origin
+        xyz="-1.15359111152458E-16 -5.55111512312578E-17 -0.0207500000000007"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.000441450058332931"
+        ixy="-6.7762635780344E-21"
+        ixz="2.07466425242616E-18"
+        iyy="0.000441450058332931"
+        iyz="-3.38231691806901E-20"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -0.965954301349358" />
+    <parent
+      link="thigh2leg_lb" />
+    <child
+      link="leg2wheel_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="hip2thigh_rf">
+    <inertial>
+      <origin
+        xyz="3.85525815338172E-18 -0.061407466158819 0.00575000000000089"
+        rpy="0 0 0" />
+      <mass
+        value="0.0599999613849593" />
+      <inertia
+        ixx="0.000155906508351339"
+        ixy="9.7737052169007E-21"
+        ixz="3.73574741794125E-24"
+        iyy="1.13512134874171E-05"
+        iyz="-1.08504933903155E-18"
+        izz="0.000165935222689896" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_rf"
+    type="continuous">
+    <origin
+      xyz="0.0424247110394264 -0.156999999999998 0"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_rf">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.10564758516642 0.00575000000000223"
+        rpy="0 0 0" />
+      <mass
+        value="0.0763000411167858" />
+      <inertia
+        ixx="0.000437218386664754"
+        ixy="-3.64224167319349E-20"
+        ixz="2.47536067446951E-20"
+        iyy="7.44363321133754E-06"
+        iyz="2.37295512587168E-18"
+        izz="0.000442980239803142" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0.0114999999999986"
+      rpy="0 0 -2.46746214692248" />
+    <parent
+      link="hip2thigh_rf" />
+    <child
+      link="thigh2leg_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_rf">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 -1.2490009027033E-16 -0.0207499999999983"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.00044145005833293"
+        ixy="-6.7762635780344E-20"
+        ixz="-9.00265480038554E-19"
+        iyy="0.00044145005833293"
+        iyz="1.86202171434693E-18"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -1.15869988791543" />
+    <parent
+      link="thigh2leg_rf" />
+    <child
+      link="leg2wheel_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="hip2thigh_rb">
+    <inertial>
+      <origin
+        xyz="2.52390274270346E-18 -0.0614074661588188 0.0057500000000017"
+        rpy="0 0 0" />
+      <mass
+        value="0.0539995474696858" />
+      <inertia
+        ixx="0.000140314771946862"
+        ixy="8.82382472227809E-21"
+        ixz="-8.22543354868638E-23"
+        iyy="1.02160131007346E-05"
+        iyz="9.67149836408586E-19"
+        izz="0.000149340545022119" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/hip2thigh_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_rb"
+    type="continuous">
+    <origin
+      xyz="-0.0525752889605738 -0.126999999999999 0"
+      rpy="1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_rb">
+    <inertial>
+      <origin
+        xyz="1.38777878078145E-17 -0.126725289376484 -0.00574999999999939"
+        rpy="0 0 0" />
+      <mass
+        value="0.0750000161747868" />
+      <inertia
+        ixx="0.000553987900915235"
+        ixy="5.88687898341739E-20"
+        ixz="3.55063939914085E-20"
+        iyy="9.4375680282246E-06"
+        iyz="-3.08532383538705E-18"
+        izz="0.00056177234358694" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/thigh2leg_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0"
+      rpy="0 0 2.46746214692248" />
+    <parent
+      link="hip2thigh_rb" />
+    <child
+      link="thigh2leg_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_rb">
+    <inertial>
+      <origin
+        xyz="-8.32667268468867E-17 1.2490009027033E-16 0.020750000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.00044145005833293"
+        ixy="-6.7762635780344E-20"
+        ixz="-9.00265480038554E-19"
+        iyy="0.00044145005833293"
+        iyz="1.86202171434693E-18"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/leg2wheel_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -2.95203152817059" />
+    <parent
+      link="thigh2leg_rb" />
+    <child
+      link="leg2wheel_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="r0">
+    <inertial>
+      <origin
+        xyz="-0.014297 -0.0255 -1.8041E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.032137" />
+      <inertia
+        ixx="1.1799E-05"
+        ixy="7.3681E-20"
+        ixz="5.2724E-23"
+        iyy="2.2374E-05"
+        iyz="-2.3323E-21"
+        izz="1.7011E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/r0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/r0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r0"
+    type="continuous">
+    <origin
+      xyz="0.15092 -0.0935 -0.0958"
+      rpy="3.1416 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="r0" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  <link
+    name="r1">
+    <inertial>
+      <origin
+        xyz="0.053294 0.0073283 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.232" />
+      <inertia
+        ixx="2.796E-05"
+        ixy="2.0282E-05"
+        ixz="-3.5676E-20"
+        iyy="0.00041328"
+        iyz="1.3707E-21"
+        izz="0.00039365" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/r1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/r1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r1"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="3.1416 0 0" />
+    <parent
+      link="r0" />
+    <child
+      link="r1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="r2">
+    <inertial>
+      <origin
+        xyz="0.037121 0.013604 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.252" />
+      <inertia
+        ixx="2.669E-05"
+        ixy="3.4523E-05"
+        ixz="6.7513E-21"
+        iyy="0.00024862"
+        iyz="-4.3417E-21"
+        izz="0.00025306" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/r2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/r2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="r2"
+    type="continuous">
+    <origin
+      xyz="0.149999999999999 0.0506800000000009 0"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="r1" />
+    <child
+      link="r2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="l0">
+    <inertial>
+      <origin
+        xyz="0.014297 -0.0255 1.249E-16"
+        rpy="0 0 0" />
+      <mass
+        value="0.032137" />
+      <inertia
+        ixx="1.1799E-05"
+        ixy="7.4538E-20"
+        ixz="-7.3014E-21"
+        iyy="2.2374E-05"
+        iyz="1.2061E-21"
+        izz="1.7011E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/l0.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/l0.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l0"
+    type="continuous">
+    <origin
+      xyz="0.15092 0.0935 -0.0958"
+      rpy="-3.1416 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="l0" />
+    <axis
+      xyz="-1 0 0" />
+  </joint>
+  <link
+    name="l1">
+    <inertial>
+      <origin
+        xyz="0.053294 0.0073283 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.232" />
+      <inertia
+        ixx="2.796E-05"
+        ixy="2.0282E-05"
+        ixz="-3.6862E-20"
+        iyy="0.00041328"
+        iyz="1.9362E-21"
+        izz="0.00039365" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/l1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/l1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l1"
+    type="continuous">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="l0" />
+    <child
+      link="l1" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="l2">
+    <inertial>
+      <origin
+        xyz="0.037121 0.013604 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.252" />
+      <inertia
+        ixx="2.669E-05"
+        ixy="3.4523E-05"
+        ixz="5.8357E-21"
+        iyy="0.00024862"
+        iyz="-3.2257E-21"
+        izz="0.00025306" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/l2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/l2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="l2"
+    type="continuous">
+    <origin
+      xyz="0.15 0.0506799999999989 0"
+      rpy="0 0 3.14159265358979" />
+    <parent
+      link="l1" />
+    <child
+      link="l2" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="armbase">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/armbase.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://Manipulator_Vlink2/meshes/armbase.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="nonono"
+    type="fixed">
+    <origin
+      xyz="0.125574711039425 0 -0.0525"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="base_link" />
+    <child
+      link="armbase" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

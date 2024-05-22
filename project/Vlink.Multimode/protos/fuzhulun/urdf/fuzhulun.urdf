@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="fuzhulun">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="7.9958716180818E-18 3.64890254428671E-18 -3.02970844583317E-18"
+        rpy="0 0 0" />
+      <mass
+        value="4.563502045004" />
+      <inertia
+        ixx="0.0280984473320404"
+        ixy="7.92687311370769E-17"
+        ixz="2.14694526373619E-20"
+        iyy="0.0169477927066625"
+        iyz="1.08880015646914E-18"
+        izz="0.0376783082336192" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="hip2thigh_lf">
+    <inertial>
+      <origin
+        xyz="6.24976908737392E-18 -0.0614074661588189 -0.00575000000000156"
+        rpy="0 0 0" />
+      <mass
+        value="0.0599999613849592" />
+      <inertia
+        ixx="0.000155906508351339"
+        ixy="2.92696874835396E-21"
+        ixz="-9.35046804636312E-21"
+        iyy="1.13512134874171E-05"
+        iyz="-7.89521073851116E-19"
+        izz="0.000165935222689896" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_lf"
+    type="continuous">
+    <origin
+      xyz="0.0424247110394242 0.156999999999999 0"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_lf">
+    <inertial>
+      <origin
+        xyz="0 -0.10564758516642 -0.00575000000000064"
+        rpy="0 0 0" />
+      <mass
+        value="0.0763000411167859" />
+      <inertia
+        ixx="0.000437218386664755"
+        ixy="1.6940658945086E-21"
+        ixz="1.95072209959967E-20"
+        iyy="7.44363321133753E-06"
+        iyz="1.46010727006436E-18"
+        izz="0.000442980239803143" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 -0.011500000000001"
+      rpy="0 0 -2.46746214692248" />
+    <parent
+      link="hip2thigh_lf" />
+    <child
+      link="thigh2leg_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_lf">
+    <inertial>
+      <origin
+        xyz="6.41847686111419E-17 -8.32667268468867E-17 0.0207499999999986"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.000441450058332931"
+        ixy="-1.6940658945086E-21"
+        ixz="2.07466425242616E-18"
+        iyy="0.000441450058332931"
+        iyz="-3.38231691806901E-20"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 0.827377338905804" />
+    <parent
+      link="thigh2leg_lf" />
+    <child
+      link="leg2wheel_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="fuzhu_lf">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-17 -0.00500000000000037 -4.98255987470369E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.0502654824574367" />
+      <inertia
+        ixx="2.05250720034533E-05"
+        ixy="9.8478934528487E-20"
+        ixz="-1.40981284252305E-35"
+        iyy="4.02123859659494E-05"
+        iyz="1.03737707309376E-21"
+        izz="2.05250720034533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fuzhu_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 -0.0230000000000016"
+      rpy="1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="hip2thigh_lf" />
+    <child
+      link="fuzhu_lf" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="hip2thigh_lb">
+    <inertial>
+      <origin
+        xyz="-2.49021734345051E-18 -0.061407466158819 -0.0057500000000007"
+        rpy="0 0 0" />
+      <mass
+        value="0.0539995474696858" />
+      <inertia
+        ixx="0.000140314771946862"
+        ixy="-7.37238832554498E-21"
+        ixz="6.14097015851312E-21"
+        iyy="1.02160131007346E-05"
+        iyz="6.95254959420047E-19"
+        izz="0.000149340545022119" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_lb"
+    type="continuous">
+    <origin
+      xyz="-0.0525752889605756 0.126999999999999 0"
+      rpy="1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_lb">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.126725289376484 0.00574999999999845"
+        rpy="0 0 0" />
+      <mass
+        value="0.0750000161747868" />
+      <inertia
+        ixx="0.000553987900915235"
+        ixy="-6.69156028330897E-20"
+        ixz="1.65224254282299E-20"
+        iyy="9.43756802822456E-06"
+        iyz="-3.30067795311841E-18"
+        izz="0.00056177234358694" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0"
+      rpy="0 0 2.46746214692248" />
+    <parent
+      link="hip2thigh_lb" />
+    <child
+      link="thigh2leg_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_lb">
+    <inertial>
+      <origin
+        xyz="-1.15359111152458E-16 -5.55111512312578E-17 -0.0207500000000007"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.000441450058332931"
+        ixy="-1.6940658945086E-21"
+        ixz="2.07466425242616E-18"
+        iyy="0.000441450058332931"
+        iyz="-3.38231691806901E-20"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -0.965954301349358" />
+    <parent
+      link="thigh2leg_lb" />
+    <child
+      link="leg2wheel_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="fuzhu_lb">
+    <inertial>
+      <origin
+        xyz="0 -0.00500000000000037 -9.42649753526637E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.0502654824574367" />
+      <inertia
+        ixx="2.05250720034533E-05"
+        ixy="9.73487745361297E-20"
+        ixz="-8.7119466438191E-36"
+        iyy="4.02123859659494E-05"
+        iyz="5.77840026526481E-22"
+        izz="2.05250720034533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fuzhu_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 -0.0114999999999999"
+      rpy="1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="hip2thigh_lb" />
+    <child
+      link="fuzhu_lb" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="hip2thigh_rf">
+    <inertial>
+      <origin
+        xyz="3.75999866151112E-18 -0.061407466158819 0.00575000000000089"
+        rpy="0 0 0" />
+      <mass
+        value="0.0599999613849593" />
+      <inertia
+        ixx="0.000155906508351339"
+        ixy="9.66236293584646E-21"
+        ixz="3.73574741794009E-24"
+        iyy="1.13512134874171E-05"
+        iyz="-1.08505463679496E-18"
+        izz="0.000165935222689896" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_rf"
+    type="continuous">
+    <origin
+      xyz="0.0424247110394264 -0.156999999999998 0"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_rf">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -0.10564758516642 0.00575000000000223"
+        rpy="0 0 0" />
+      <mass
+        value="0.0763000411167858" />
+      <inertia
+        ixx="0.000437218386664754"
+        ixy="-5.12454933088852E-20"
+        ixz="2.47536067446951E-20"
+        iyy="7.44363321133746E-06"
+        iyz="2.37295512587168E-18"
+        izz="0.000442980239803142" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0.0114999999999986"
+      rpy="0 0 -2.46746214692248" />
+    <parent
+      link="hip2thigh_rf" />
+    <child
+      link="thigh2leg_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_rf">
+    <inertial>
+      <origin
+        xyz="5.55111512312578E-17 -1.2490009027033E-16 -0.0207499999999983"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.00044145005833293"
+        ixy="-6.7762635780344E-20"
+        ixz="-9.00265480038554E-19"
+        iyy="0.00044145005833293"
+        iyz="1.86202171434693E-18"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -1.15869988791543" />
+    <parent
+      link="thigh2leg_rf" />
+    <child
+      link="leg2wheel_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="fuzhu_rf">
+    <inertial>
+      <origin
+        xyz="0 -0.00500000000000056 1.37521984268062E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0502654824574367" />
+      <inertia
+        ixx="2.05250720034533E-05"
+        ixy="-1.41793480672378E-19"
+        ixz="-6.23687945093439E-35"
+        iyy="4.02123859659494E-05"
+        iyz="-1.44348156630938E-21"
+        izz="2.05250720034533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fuzhu_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0.0229999999999997"
+      rpy="-1.5707963267949 0 -1.5707963267949" />
+    <parent
+      link="hip2thigh_rf" />
+    <child
+      link="fuzhu_rf" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="hip2thigh_rb">
+    <inertial>
+      <origin
+        xyz="2.6269664293846E-18 -0.0614074661588188 0.0057500000000017"
+        rpy="0 0 0" />
+      <mass
+        value="0.0539995474696858" />
+      <inertia
+        ixx="0.000140314771946862"
+        ixy="8.79161511338388E-21"
+        ixz="-8.22543354868634E-23"
+        iyy="1.02160131007346E-05"
+        iyz="9.6713939187654E-19"
+        izz="0.000149340545022119" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/hip2thigh_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_rb"
+    type="continuous">
+    <origin
+      xyz="-0.0525752889605738 -0.126999999999999 0"
+      rpy="1.5707963267949 1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="hip2thigh_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh2leg_rb">
+    <inertial>
+      <origin
+        xyz="1.38777878078145E-17 -0.126725289376484 -0.00574999999999939"
+        rpy="0 0 0" />
+      <mass
+        value="0.0750000161747868" />
+      <inertia
+        ixx="0.000553987900915235"
+        ixy="8.173867941004E-20"
+        ixz="3.55063939914085E-20"
+        iyy="9.43756802822453E-06"
+        iyz="-3.08532383538705E-18"
+        izz="0.00056177234358694" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/thigh2leg_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0"
+      rpy="0 0 2.46746214692248" />
+    <parent
+      link="hip2thigh_rb" />
+    <child
+      link="thigh2leg_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg2wheel_rb">
+    <inertial>
+      <origin
+        xyz="-8.32667268468867E-17 1.2490009027033E-16 0.020750000000001"
+        rpy="0 0 0" />
+      <mass
+        value="0.521949966745835" />
+      <inertia
+        ixx="0.00044145005833293"
+        ixy="-6.7762635780344E-20"
+        ixz="-9.00265480038554E-19"
+        iyy="0.00044145005833293"
+        iyz="1.86202171434693E-18"
+        izz="0.000733078728294525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/leg2wheel_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="foot_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -2.95203152817059" />
+    <parent
+      link="thigh2leg_rb" />
+    <child
+      link="leg2wheel_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="fuzhu_rb">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 -0.00500000000000056 -1.81618792017544E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.0502654824574367" />
+      <inertia
+        ixx="2.05250720034533E-05"
+        ixy="-1.37064390769696E-19"
+        ixz="-3.54309943894681E-35"
+        iyy="4.02123859659494E-05"
+        iyz="-1.15312764943136E-21"
+        izz="2.05250720034533E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://fuzhulun/meshes/fuzhu_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="fuzhu_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0.0115000000000017"
+      rpy="-1.5707963267949 0 1.5707963267949" />
+    <parent
+      link="hip2thigh_rb" />
+    <child
+      link="fuzhu_rb" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+</robot>

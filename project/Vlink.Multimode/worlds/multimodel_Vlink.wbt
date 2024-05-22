@@ -1,0 +1,718 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+
+WorldInfo {
+  basicTimeStep 1
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.38829755153268136 0.6480413757663221 0.6551850019411439 2.5129173325907743
+  position 1.5748716831215832 0.6332984140990114 2.519392469232588
+  follow "Fuzhulun"
+  followSmoothness 0
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+  rotation 0 0.7071067811865475 0.7071067811865475 3.1415
+}
+Robot {
+  translation 0 0.21 0.55
+  rotation 1 0 0 -1.5707953071795862
+  children [
+    InertialUnit {
+      name "IMU"
+    }
+    Gyro {
+    }
+    Accelerometer {
+      name "ACC"
+    }
+    GPS {
+    }
+    Shape {
+      appearance DEF base_link_material PBRAppearance {
+        baseColor 0.792157 0.819608 0.933333
+        roughness 1
+        metalness 0
+      }
+      geometry DEF base_link Mesh {
+        url [
+          "..//protos/fuzhulun/meshes/base_link.STL"
+        ]
+      }
+    }
+    DEF LF HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.042425 0.157 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_lf"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_lf_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.042425 0.157 0
+        rotation 0.5773502691896257 -0.5773502691896257 0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_lf_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_lf Mesh {
+              url [
+                "..//protos/fuzhulun/meshes/hip2thigh_lf.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 -0.0115
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_lf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 -0.0115
+              rotation 0 0 -1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_lf_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_lf Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/thigh2leg_lf.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "foot_lf_sensor"
+                    }
+                  ]
+                  endPoint SolidReference {
+                    solidName "leg2wheel_lb"
+                  }
+                }
+              ]
+              name "thigh2leg_lf"
+              boundingObject USE thigh2leg_lf
+              physics Physics {
+                density -1
+                mass 0.0763
+                centerOfMass [
+                  0 -0.105648 -0.00575
+                ]
+                inertiaMatrix [
+                  0.0004372184 7.443633e-06 0.0004429802
+                  1.694066e-21 1.950722e-20 1.460107e-18
+                ]
+              }
+            }
+          }
+          DEF fuzhu HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 -0.023
+            }
+            device [
+              PositionSensor {
+                name "fuzhu_lf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 -0.023
+              rotation 0.5773502691896257 -0.5773502691896257 -0.5773502691896257 2.094395
+              children [
+                Shape {
+                  appearance DEF fuzhu_lf_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF fuzhu_lf Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/fuzhu_lf.STL"
+                    ]
+                  }
+                }
+              ]
+              name "fuzhu_lf"
+              boundingObject USE fuzhu_lf
+              physics Physics {
+                density -1
+                mass 0.050265
+                centerOfMass [
+                  0 -0.005 0
+                ]
+                inertiaMatrix [
+                  2.052507e-05 4.021239e-05 2.052507e-05
+                  9.847893e-20 -1.409813e-35 1.037377e-21
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_lf"
+        boundingObject USE hip2thigh_lf
+        physics Physics {
+          density -1
+          mass 0.06
+          centerOfMass [
+            0 -0.061407 -0.00575
+          ]
+          inertiaMatrix [
+            0.0001559065 1.135121e-05 0.0001659352
+            2.926969e-21 -9.350468e-21 -7.895211e-19
+          ]
+        }
+      }
+    }
+    DEF LB HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor -0.052575 0.127 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_lb"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_lb_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.052575 0.127 0
+        rotation 0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_lb_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_lb Mesh {
+              url [
+                "..//protos/fuzhulun/meshes/hip2thigh_lb.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_lb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0
+              rotation 0 0 1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_lb_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_lb Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/thigh2leg_lb.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "foot_lb"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "foot_lb_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.24 0
+                    rotation 0 0 -1 0.9659539999999998
+                    children [
+                      Shape {
+                        appearance DEF leg2wheel_lb_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF leg2wheel_lb Mesh {
+                          url [
+                            "..//protos/fuzhulun/meshes/leg2wheel_lb.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "leg2wheel_lb"
+                    boundingObject USE leg2wheel_lb
+                    physics Physics {
+                      density -1
+                      mass 0.52195
+                      centerOfMass [
+                        0 0 -0.02075
+                      ]
+                      inertiaMatrix [
+                        0.0004414501 0.0004414501 0.0007330787
+                        -1.694066e-21 2.074664e-18 -3.382317e-20
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "thigh2leg_lb"
+              boundingObject USE thigh2leg_lb
+              physics Physics {
+                density -1
+                mass 0.075
+                centerOfMass [
+                  0 -0.126725 0.00575
+                ]
+                inertiaMatrix [
+                  0.0005539879 9.437568e-06 0.0005617723
+                  -6.69156e-20 1.652243e-20 -3.300678e-18
+                ]
+              }
+            }
+          }
+          DEF fuzhu HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 -0.0115
+            }
+            device [
+              PositionSensor {
+                name "fuzhu_lb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 -0.0115
+              rotation 0.5773502691896257 0.5773502691896257 0.5773502691896257 2.094395
+              children [
+                Shape {
+                  appearance DEF fuzhu_lb_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF fuzhu_lb Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/fuzhu_lb.STL"
+                    ]
+                  }
+                }
+              ]
+              name "fuzhu_lb"
+              boundingObject USE fuzhu_lb
+              physics Physics {
+                density -1
+                mass 0.050265
+                centerOfMass [
+                  0 -0.005 0
+                ]
+                inertiaMatrix [
+                  2.052507e-05 4.021239e-05 2.052507e-05
+                  9.734877e-20 -8.711947e-36 5.7784e-22
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_lb"
+        boundingObject USE hip2thigh_lb
+        physics Physics {
+          density -1
+          mass 0.054
+          centerOfMass [
+            0 -0.061407 -0.00575
+          ]
+          inertiaMatrix [
+            0.0001403148 1.021601e-05 0.0001493405
+            -7.372388e-21 6.14097e-21 6.95255e-19
+          ]
+        }
+      }
+    }
+    DEF RF HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.042425 -0.157 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_rf"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_rf_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.042425 -0.157 0
+        rotation 0.5773502691896257 -0.5773502691896257 0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_rf_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_rf Mesh {
+              url [
+                "..//protos/fuzhulun/meshes/hip2thigh_rf.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0.0115
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_rf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0.0115
+              rotation 0 0 -1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_rf_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_rf Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/thigh2leg_rf.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "foot_rf_sensor"
+                    }
+                  ]
+                  endPoint SolidReference {
+                    solidName "leg2wheel_rb"
+                  }
+                }
+              ]
+              name "thigh2leg_rf"
+              boundingObject USE thigh2leg_rf
+              physics Physics {
+                density -1
+                mass 0.0763
+                centerOfMass [
+                  0 -0.105648 0.00575
+                ]
+                inertiaMatrix [
+                  0.0004372184 7.443633e-06 0.0004429802
+                  -5.124549e-20 2.475361e-20 2.372955e-18
+                ]
+              }
+            }
+          }
+          DEF fuzhu HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0.023
+            }
+            device [
+              PositionSensor {
+                name "fuzhu_rf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0.023
+              rotation -0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+              children [
+                Shape {
+                  appearance DEF fuzhu_rf_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF fuzhu_rf Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/fuzhu_rf.STL"
+                    ]
+                  }
+                }
+              ]
+              name "fuzhu_rf"
+              boundingObject USE fuzhu_rf
+              physics Physics {
+                density -1
+                mass 0.050265
+                centerOfMass [
+                  0 -0.005 0
+                ]
+                inertiaMatrix [
+                  2.052507e-05 4.021239e-05 2.052507e-05
+                  -1.417935e-19 -6.236879e-35 -1.443482e-21
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_rf"
+        boundingObject USE hip2thigh_rf
+        physics Physics {
+          density -1
+          mass 0.06
+          centerOfMass [
+            0 -0.061407 0.00575
+          ]
+          inertiaMatrix [
+            0.0001559065 1.135121e-05 0.0001659352
+            9.662363e-21 3.735747e-24 -1.085055e-18
+          ]
+        }
+      }
+    }
+    DEF RB HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor -0.052575 -0.127 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_rb"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_rb_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.052575 -0.127 0
+        rotation 0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_rb_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_rb Mesh {
+              url [
+                "..//protos/fuzhulun/meshes/hip2thigh_rb.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_rb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0
+              rotation 0 0 1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_rb_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_rb Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/thigh2leg_rb.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "foot_rb"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "foot_rb_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.24 0
+                    rotation 0 0 -1 2.952032
+                    children [
+                      Shape {
+                        appearance DEF leg2wheel_rb_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF leg2wheel_rb Mesh {
+                          url [
+                            "..//protos/fuzhulun/meshes/leg2wheel_rb.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "leg2wheel_rb"
+                    boundingObject USE leg2wheel_rb
+                    physics Physics {
+                      density -1
+                      mass 0.52195
+                      centerOfMass [
+                        0 0 0.02075
+                      ]
+                      inertiaMatrix [
+                        0.0004414501 0.0004414501 0.0007330787
+                        -6.776264e-20 -9.002655e-19 1.862022e-18
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "thigh2leg_rb"
+              boundingObject USE thigh2leg_rb
+              physics Physics {
+                density -1
+                mass 0.075
+                centerOfMass [
+                  0 -0.126725 -0.00575
+                ]
+                inertiaMatrix [
+                  0.0005539879 9.437568e-06 0.0005617723
+                  8.173868e-20 3.550639e-20 -3.085324e-18
+                ]
+              }
+            }
+          }
+          DEF fuzhu HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0.0115
+            }
+            device [
+              PositionSensor {
+                name "fuzhu_rb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0.0115
+              rotation -0.5773502691896257 -0.5773502691896257 0.5773502691896257 2.094395
+              children [
+                Shape {
+                  appearance DEF fuzhu_rb_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF fuzhu_rb Mesh {
+                    url [
+                      "..//protos/fuzhulun/meshes/fuzhu_rb.STL"
+                    ]
+                  }
+                }
+              ]
+              name "fuzhu_rb"
+              boundingObject USE fuzhu_rb
+              physics Physics {
+                density -1
+                mass 0.050265
+                centerOfMass [
+                  0 -0.005 0
+                ]
+                inertiaMatrix [
+                  2.052507e-05 4.021239e-05 2.052507e-05
+                  -1.370644e-19 -3.543099e-35 -1.153128e-21
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_rb"
+        boundingObject USE hip2thigh_rb
+        physics Physics {
+          density -1
+          mass 0.054
+          centerOfMass [
+            0 -0.061407 0.00575
+          ]
+          inertiaMatrix [
+            0.0001403148 1.021601e-05 0.0001493405
+            8.791615e-21 -8.225434e-23 9.671394e-19
+          ]
+        }
+      }
+    }
+  ]
+  name "Fuzhulun"
+  boundingObject USE base_link
+  physics Physics {
+    density -1
+    mass 4.563502
+    centerOfMass [
+      0 0 0
+    ]
+    inertiaMatrix [
+      0.02809845 0.01694779 0.03767831
+      7.926873e-17 2.146945e-20 1.0888e-18
+    ]
+  }
+  controller "MultiModelVlink"
+}
+

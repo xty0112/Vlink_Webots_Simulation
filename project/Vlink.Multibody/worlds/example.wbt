@@ -1,0 +1,1752 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+
+WorldInfo {
+  basicTimeStep 1
+  coordinateSystem "NUE"
+}
+Viewpoint {
+  orientation -0.4516225090589535 0.6882509281384982 0.5677567870380691 2.6872512149629624
+  position 1.1126263223573358 1.0074465648479574 2.23850690238752
+}
+TexturedBackground {
+}
+Floor {
+  rotation 0 0.7071067811865475 0.7071067811865475 3.14
+  size 1000 1000
+}
+TexturedBackgroundLight {
+}
+DEF R0 Robot {
+  translation 0 0.22 0.01
+  rotation 1 0 0 -1.5707953071795862
+  children [
+    Receiver {
+      rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+    }
+    Connector {
+      translation -0.1 -0.1 0
+      rotation -0.5779632817556773 0.5770435186977702 0.5770435186977702 2.0934758276232155
+      name "armature_r"
+      type "passive"
+    }
+    Connector {
+      translation -0.1 0.1 0
+      rotation -0.5779632817556773 0.5770435186977702 0.5770435186977702 2.0934758276232155
+      name "armature_l"
+      type "passive"
+    }
+    GPS {
+    }
+    Accelerometer {
+      name "ACC"
+    }
+    Gyro {
+    }
+    InertialUnit {
+      name "IMU"
+    }
+    Shape {
+      appearance DEF base_link_material PBRAppearance {
+        baseColor 0.792157 0.819608 0.933333
+        roughness 1
+        metalness 0
+      }
+      geometry DEF base_link Mesh {
+        url [
+          "../protos/Manipulator_Vlink/meshes/base_link.STL"
+        ]
+      }
+    }
+    DEF hipLF HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.042425 0.157 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_lf"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_lf_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.042425 0.157 0
+        rotation 0.5773502691896257 -0.5773502691896257 0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_lf_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_lf Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_lf.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 -0.0115
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_lf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 -0.0115
+              rotation 0 0 -1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_lf_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_lf Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_lf.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "foot_lf_sensor"
+                    }
+                  ]
+                  endPoint SolidReference {
+                    solidName "leg2wheel_lb"
+                  }
+                }
+              ]
+              name "thigh2leg_lf"
+              boundingObject USE thigh2leg_lf
+              physics Physics {
+                density -1
+                mass 0.0763
+                centerOfMass [
+                  0 -0.105648 -0.00575
+                ]
+                inertiaMatrix [
+                  0.0004372184 7.443633e-06 0.0004429802
+                  1.694066e-21 1.950722e-20 1.460107e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_lf"
+        boundingObject USE hip2thigh_lf
+        physics Physics {
+          density -1
+          mass 0.06
+          centerOfMass [
+            0 -0.061407 -0.00575
+          ]
+          inertiaMatrix [
+            0.0001559065 1.135121e-05 0.0001659352
+            2.944762e-21 -9.350468e-21 -7.895302e-19
+          ]
+        }
+      }
+    }
+    DEF hipLB HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor -0.052575 0.127 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_lb"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_lb_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.052575 0.127 0
+        rotation 0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_lb_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_lb Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_lb.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_lb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0
+              rotation 0 0 1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_lb_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_lb Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_lb.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "foot_lb"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "foot_lb_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.24 0
+                    rotation 0 0 -1 0.9659539999999998
+                    children [
+                      Shape {
+                        appearance DEF leg2wheel_lb_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF leg2wheel_lb Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/leg2wheel_lb.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "leg2wheel_lb"
+                    boundingObject USE leg2wheel_lb
+                    physics Physics {
+                      density -1
+                      mass 0.52195
+                      centerOfMass [
+                        0 0 -0.02075
+                      ]
+                      inertiaMatrix [
+                        0.0004414501 0.0004414501 0.0007330787
+                        -1.694066e-21 2.074664e-18 -3.382317e-20
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "thigh2leg_lb"
+              boundingObject USE thigh2leg_lb
+              physics Physics {
+                density -1
+                mass 0.075
+                centerOfMass [
+                  0 -0.126725 0.00575
+                ]
+                inertiaMatrix [
+                  0.0005539879 9.437568e-06 0.0005617723
+                  -1.02491e-19 1.708053e-20 -3.300747e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_lb"
+        boundingObject USE hip2thigh_lb
+        physics Physics {
+          density -1
+          mass 0.054
+          centerOfMass [
+            0 -0.061407 -0.00575
+          ]
+          inertiaMatrix [
+            0.0001403148 1.021601e-05 0.0001493405
+            -7.386862e-21 6.14097e-21 6.954822e-19
+          ]
+        }
+      }
+    }
+    DEF hipRF HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.042425 -0.157 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_rf"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_rf_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.042425 -0.157 0
+        rotation 0.5773502691896257 -0.5773502691896257 0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_rf_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_rf Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_rf.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0.0115
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_rf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0.0115
+              rotation 0 0 -1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_rf_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_rf Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_rf.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "foot_rf_sensor"
+                    }
+                  ]
+                  endPoint SolidReference {
+                    solidName "leg2wheel_rb"
+                  }
+                }
+              ]
+              name "thigh2leg_rf"
+              boundingObject USE thigh2leg_rf
+              physics Physics {
+                density -1
+                mass 0.0763
+                centerOfMass [
+                  0 -0.105648 0.00575
+                ]
+                inertiaMatrix [
+                  0.0004372184 7.443633e-06 0.0004429802
+                  -5.844527e-20 2.475712e-20 2.373019e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_rf"
+        boundingObject USE hip2thigh_rf
+        physics Physics {
+          density -1
+          mass 0.06
+          centerOfMass [
+            0 -0.061407 0.00575
+          ]
+          inertiaMatrix [
+            0.0001559065 1.135121e-05 0.0001659352
+            9.702831e-21 3.735747e-24 -1.085048e-18
+          ]
+        }
+      }
+    }
+    DEF hipRB HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor -0.052575 -0.127 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_rb"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_rb_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.052575 -0.127 0
+        rotation 0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_rb_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_rb Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_rb.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_rb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0
+              rotation 0 0 1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_rb_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_rb Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_rb.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "foot_rb"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "foot_rb_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.24 0
+                    rotation 0 0 -1 2.952032
+                    children [
+                      Shape {
+                        appearance DEF leg2wheel_rb_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF leg2wheel_rb Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/leg2wheel_rb.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "leg2wheel_rb"
+                    boundingObject USE leg2wheel_rb
+                    physics Physics {
+                      density -1
+                      mass 0.52195
+                      centerOfMass [
+                        0 0 0.02075
+                      ]
+                      inertiaMatrix [
+                        0.0004414501 0.0004414501 0.0007330787
+                        -6.776264e-20 -9.002655e-19 1.862022e-18
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "thigh2leg_rb"
+              boundingObject USE thigh2leg_rb
+              physics Physics {
+                density -1
+                mass 0.075
+                centerOfMass [
+                  0 -0.126725 -0.00575
+                ]
+                inertiaMatrix [
+                  0.0005539879 9.437568e-06 0.0005617723
+                  3.769297e-20 3.51747e-20 -3.084287e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_rb"
+        boundingObject USE hip2thigh_rb
+        physics Physics {
+          density -1
+          mass 0.054
+          centerOfMass [
+            0 -0.061407 0.00575
+          ]
+          inertiaMatrix [
+            0.0001403148 1.021601e-05 0.0001493405
+            8.81419e-21 -8.225434e-23 9.669368e-19
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.133225 -0.068 -0.0135
+      }
+      device [
+        RotationalMotor {
+          name "r0"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "r0_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.133225 -0.068 -0.0135
+        rotation 1 0 0 3.141593
+        children [
+          Shape {
+            appearance DEF r0_material PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF r0 Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/r0.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 0.0255 -0.03
+            }
+            device [
+              RotationalMotor {
+                name "r1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "r1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.0255 -0.03
+              rotation 1 0 0 3.141593
+              children [
+                Connector {
+                  translation 0.18 0 0
+                  rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+                  name "magnet_r"
+                  type "active"
+                }
+                Shape {
+                  appearance DEF r1_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF r1 Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/r1.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 -1 0
+                    anchor 0.15 0.05068 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "r2"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "r2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.15 0.05068 0
+                    rotation 0 0 1 3.141593
+                    children [
+                      Shape {
+                        appearance DEF r2_material PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF r2 Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/r2.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "r2"
+                    boundingObject USE r2
+                    physics Physics {
+                      density -1
+                      mass 0.252
+                      centerOfMass [
+                        0.037121 0.013604 0
+                      ]
+                      inertiaMatrix [
+                        2.669e-05 0.00024862 0.00025306
+                        3.4523e-05 4.1921e-22 -2.6906e-21
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "r1"
+              boundingObject USE r1
+              physics Physics {
+                density -1
+                mass 0.242
+                centerOfMass [
+                  0.053294 0.007328 0
+                ]
+                inertiaMatrix [
+                  2.796e-05 0.00041328 0.00039365
+                  2.0282e-05 -1.5298e-20 7.5624e-22
+                ]
+              }
+            }
+          }
+        ]
+        name "r0"
+        boundingObject USE r0
+        physics Physics {
+          density -1
+          mass 0.032137
+          centerOfMass [
+            0 0 -0.015703
+          ]
+          inertiaMatrix [
+            1.7011e-05 2.2374e-05 1.1799e-05
+            3.5016e-20 -1.9417e-21 3.8495e-22
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.133225 0.068 -0.0135
+      }
+      device [
+        RotationalMotor {
+          name "l0"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "l0_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.133225 0.068 -0.0135
+        rotation 0 -1 0 3.141593
+        children [
+          Shape {
+            appearance DEF l0_material PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF l0 Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/l0.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 0.0255 -0.03
+            }
+            device [
+              RotationalMotor {
+                name "l1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "l1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.0255 -0.03
+              rotation 0 0 1 3.141593
+              children [
+                Connector {
+                  translation 0.18 0 0
+                  rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+                  name "magnet_l"
+                  type "active"
+                }
+                Shape {
+                  appearance DEF l1_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF l1 Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/l1.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 -1 0
+                    anchor 0.15 0.05068 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "l2"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "l2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.15 0.05068 0
+                    rotation 0 0 1 3.141593
+                    children [
+                      Shape {
+                        appearance DEF l2_material PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF l2 Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/l2.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "l2"
+                    boundingObject USE l2
+                    physics Physics {
+                      density -1
+                      mass 0.252
+                      centerOfMass [
+                        0.037121 0.013604 0
+                      ]
+                      inertiaMatrix [
+                        2.669e-05 0.00024862 0.00025306
+                        3.4523e-05 5.4659e-21 -4.2579e-21
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "l1"
+              boundingObject USE l1
+              physics Physics {
+                density -1
+                mass 0.242
+                centerOfMass [
+                  0.053294 0.007328 0
+                ]
+                inertiaMatrix [
+                  2.796e-05 0.00041328 0.00039365
+                  2.0282e-05 -5.6835e-20 2.2809e-21
+                ]
+              }
+            }
+          }
+        ]
+        name "l0"
+        boundingObject USE l0
+        physics Physics {
+          density -1
+          mass 0.032137
+          centerOfMass [
+            0 0 -0.015703
+          ]
+          inertiaMatrix [
+            1.701143e-05 2.237393e-05 1.179923e-05
+            3.469494e-20 -4.538597e-22 -2.027934e-22
+          ]
+        }
+      }
+    }
+    Solid {
+      translation 0.125575 0 -0.0525
+      rotation 0.5773502691896258 0.5773502691896258 0.5773502691896258 2.094395
+      children [
+        Shape {
+          appearance DEF armbase_material PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry DEF armbase Mesh {
+            url [
+              "../protos/Manipulator_Vlink/meshes/armbase.STL"
+            ]
+          }
+        }
+      ]
+      name "armbase"
+      boundingObject USE armbase
+      physics Physics {
+        density -1
+        mass 0.384
+        centerOfMass [
+          0 0.010012 0.002705
+        ]
+        inertiaMatrix [
+          7.0477e-05 0.00069458 0.00065488
+          -3.3653e-20 3.9496e-18 -5.1152e-06
+        ]
+      }
+    }
+  ]
+  name "ManipulatorVlink"
+  boundingObject USE base_link
+  physics Physics {
+    density -1
+    mass 4.563502
+    centerOfMass [
+      0 0 0
+    ]
+    inertiaMatrix [
+      0.02809845 0.01694779 0.03767831
+      7.967977e-17 1.040387e-20 1.0888e-18
+    ]
+  }
+  controller "SVlink"
+}
+DEF R1 Robot {
+  translation -0.71 0.22 0.01
+  rotation 1 0 0 -1.5707953071795862
+  children [
+    Receiver {
+      rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+      channel 1
+    }
+    Connector {
+      translation -0.1 -0.1 0
+      rotation -0.5779632817556773 0.5770435186977702 0.5770435186977702 2.0934758276232155
+      name "armature_r"
+      type "passive"
+      distanceTolerance 0.1
+      axisTolerance 1
+    }
+    Connector {
+      translation -0.1 0.1 0
+      rotation -0.5779632817556773 0.5770435186977702 0.5770435186977702 2.0934758276232155
+      name "armature_l"
+      type "passive"
+      distanceTolerance 0.1
+      axisTolerance 1
+    }
+    GPS {
+    }
+    Accelerometer {
+      name "ACC"
+    }
+    Gyro {
+    }
+    InertialUnit {
+      name "IMU"
+    }
+    Shape {
+      appearance DEF base_link_material PBRAppearance {
+        baseColor 0.792157 0.819608 0.933333
+        roughness 1
+        metalness 0
+      }
+      geometry DEF base_link Mesh {
+        url [
+          "../protos/Manipulator_Vlink/meshes/base_link.STL"
+        ]
+      }
+    }
+    DEF hipLF HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.042425 0.157 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_lf"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_lf_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.042425 0.157 0
+        rotation 0.5773502691896258 -0.5773502691896258 0.5773502691896255 2.0943949999999996
+        children [
+          Shape {
+            appearance DEF hip2thigh_lf_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_lf Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_lf.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 -0.0115
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_lf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 -0.0115
+              rotation 0 0 -1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_lf_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_lf Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_lf.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "foot_lf_sensor"
+                    }
+                  ]
+                  endPoint SolidReference {
+                    solidName "leg2wheel_lb"
+                  }
+                }
+              ]
+              name "thigh2leg_lf"
+              boundingObject USE thigh2leg_lf
+              physics Physics {
+                density -1
+                mass 0.0763
+                centerOfMass [
+                  0 -0.105648 -0.00575
+                ]
+                inertiaMatrix [
+                  0.0004372184 7.443633e-06 0.0004429802
+                  1.694066e-21 1.950722e-20 1.460107e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_lf"
+        boundingObject USE hip2thigh_lf
+        physics Physics {
+          density -1
+          mass 0.06
+          centerOfMass [
+            0 -0.061407 -0.00575
+          ]
+          inertiaMatrix [
+            0.0001559065 1.135121e-05 0.0001659352
+            2.944762e-21 -9.350468e-21 -7.895302e-19
+          ]
+        }
+      }
+    }
+    DEF hipLB HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor -0.052575 0.127 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_lb"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_lb_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.052575 0.127 0
+        rotation 0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_lb_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_lb Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_lb.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_lb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0
+              rotation 0 0 1 2.467462
+              children [
+                Shape {
+                  appearance DEF thigh2leg_lb_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_lb Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_lb.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "foot_lb"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "foot_lb_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.24 0
+                    rotation 0 0 -1 0.9659539999999998
+                    children [
+                      Shape {
+                        appearance DEF leg2wheel_lb_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF leg2wheel_lb Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/leg2wheel_lb.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "leg2wheel_lb"
+                    boundingObject USE leg2wheel_lb
+                    physics Physics {
+                      density -1
+                      mass 0.52195
+                      centerOfMass [
+                        0 0 -0.02075
+                      ]
+                      inertiaMatrix [
+                        0.0004414501 0.0004414501 0.0007330787
+                        -1.694066e-21 2.074664e-18 -3.382317e-20
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "thigh2leg_lb"
+              boundingObject USE thigh2leg_lb
+              physics Physics {
+                density -1
+                mass 0.075
+                centerOfMass [
+                  0 -0.126725 0.00575
+                ]
+                inertiaMatrix [
+                  0.0005539879 9.437568e-06 0.0005617723
+                  -1.02491e-19 1.708053e-20 -3.300747e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_lb"
+        boundingObject USE hip2thigh_lb
+        physics Physics {
+          density -1
+          mass 0.054
+          centerOfMass [
+            0 -0.061407 -0.00575
+          ]
+          inertiaMatrix [
+            0.0001403148 1.021601e-05 0.0001493405
+            -7.386862e-21 6.14097e-21 6.954822e-19
+          ]
+        }
+      }
+    }
+    DEF hipRF HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor 0.042425 -0.157 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_rf"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_rf_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.042425 -0.157 0
+        rotation 0.5773502691896257 -0.5773502691896256 0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_rf_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_rf Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_rf.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0.0115
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_rf_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0.0115
+              rotation 0 0 -1 2.4674619999999994
+              children [
+                Shape {
+                  appearance DEF thigh2leg_rf_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_rf Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_rf.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    PositionSensor {
+                      name "foot_rf_sensor"
+                    }
+                  ]
+                  endPoint SolidReference {
+                    solidName "leg2wheel_rb"
+                  }
+                }
+              ]
+              name "thigh2leg_rf"
+              boundingObject USE thigh2leg_rf
+              physics Physics {
+                density -1
+                mass 0.0763
+                centerOfMass [
+                  0 -0.105648 0.00575
+                ]
+                inertiaMatrix [
+                  0.0004372184 7.443633e-06 0.0004429802
+                  -5.844527e-20 2.475712e-20 2.373019e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_rf"
+        boundingObject USE hip2thigh_rf
+        physics Physics {
+          density -1
+          mass 0.06
+          centerOfMass [
+            0 -0.061407 0.00575
+          ]
+          inertiaMatrix [
+            0.0001559065 1.135121e-05 0.0001659352
+            9.702831e-21 3.735747e-24 -1.085048e-18
+          ]
+        }
+      }
+    }
+    DEF hipRB HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 -1 0
+        anchor -0.052575 -0.127 0
+        dampingConstant 0.4
+        staticFriction 0.2
+      }
+      device [
+        RotationalMotor {
+          name "hip_rb"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "hip_rb_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.052575 -0.127 0
+        rotation 0.5773502691896257 0.5773502691896257 -0.5773502691896257 2.094395
+        children [
+          Shape {
+            appearance DEF hip2thigh_rb_material PBRAppearance {
+              baseColor 0.792157 0.819608 0.933333
+              roughness 1
+              metalness 0
+            }
+            geometry DEF hip2thigh_rb Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/hip2thigh_rb.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 0 1
+              anchor 0 -0.14 0
+              dampingConstant 0.2
+              staticFriction 0.1
+            }
+            device [
+              PositionSensor {
+                name "knee_rb_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.14 0
+              rotation 0 0 1 2.4674619999999994
+              children [
+                Shape {
+                  appearance DEF thigh2leg_rb_material PBRAppearance {
+                    baseColor 0.792157 0.819608 0.933333
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF thigh2leg_rb Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/thigh2leg_rb.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 0 1
+                    anchor 0 -0.24 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "foot_rb"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "foot_rb_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0 -0.24 0
+                    rotation 0 0 -1 2.952032000000001
+                    children [
+                      Shape {
+                        appearance DEF leg2wheel_rb_material PBRAppearance {
+                          baseColor 0.792157 0.819608 0.933333
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF leg2wheel_rb Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/leg2wheel_rb.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "leg2wheel_rb"
+                    boundingObject USE leg2wheel_rb
+                    physics Physics {
+                      density -1
+                      mass 0.52195
+                      centerOfMass [
+                        0 0 0.02075
+                      ]
+                      inertiaMatrix [
+                        0.0004414501 0.0004414501 0.0007330787
+                        -6.776264e-20 -9.002655e-19 1.862022e-18
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "thigh2leg_rb"
+              boundingObject USE thigh2leg_rb
+              physics Physics {
+                density -1
+                mass 0.075
+                centerOfMass [
+                  0 -0.126725 -0.00575
+                ]
+                inertiaMatrix [
+                  0.0005539879 9.437568e-06 0.0005617723
+                  3.769297e-20 3.51747e-20 -3.084287e-18
+                ]
+              }
+            }
+          }
+        ]
+        name "hip2thigh_rb"
+        boundingObject USE hip2thigh_rb
+        physics Physics {
+          density -1
+          mass 0.054
+          centerOfMass [
+            0 -0.061407 0.00575
+          ]
+          inertiaMatrix [
+            0.0001403148 1.021601e-05 0.0001493405
+            8.81419e-21 -8.225434e-23 9.669368e-19
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.133225 -0.068 -0.0135
+      }
+      device [
+        RotationalMotor {
+          name "r0"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "r0_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.133225 -0.068 -0.0135
+        rotation 1 0 0 3.141593
+        children [
+          Shape {
+            appearance DEF r0_material PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF r0 Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/r0.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 0.0255 -0.03
+            }
+            device [
+              RotationalMotor {
+                name "r1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "r1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.0255 -0.03
+              rotation 1 -7.446846945286491e-28 0 3.141593
+              children [
+                Connector {
+                  translation 0.18 0 0
+                  rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+                  name "magnet_r"
+                  type "active"
+                }
+                Shape {
+                  appearance DEF r1_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF r1 Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/r1.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 -1 0
+                    anchor 0.15 0.05068 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "r2"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "r2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.15 0.05068 0
+                    rotation 0 -7.888609052210282e-30 1 3.141593
+                    children [
+                      Shape {
+                        appearance DEF r2_material PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF r2 Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/r2.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "r2"
+                    boundingObject USE r2
+                    physics Physics {
+                      density -1
+                      mass 0.252
+                      centerOfMass [
+                        0.037121 0.013604 0
+                      ]
+                      inertiaMatrix [
+                        2.669e-05 0.00024862 0.00025306
+                        3.4523e-05 4.1921e-22 -2.6906e-21
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "r1"
+              boundingObject USE r1
+              physics Physics {
+                density -1
+                mass 0.242
+                centerOfMass [
+                  0.053294 0.007328 0
+                ]
+                inertiaMatrix [
+                  2.796e-05 0.00041328 0.00039365
+                  2.0282e-05 -1.5298e-20 7.5624e-22
+                ]
+              }
+            }
+          }
+        ]
+        name "r0"
+        boundingObject USE r0
+        physics Physics {
+          density -1
+          mass 0.032137
+          centerOfMass [
+            0 0 -0.015703
+          ]
+          inertiaMatrix [
+            1.7011e-05 2.2374e-05 1.1799e-05
+            3.5016e-20 -1.9417e-21 3.8495e-22
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.133225 0.068 -0.0135
+      }
+      device [
+        RotationalMotor {
+          name "l0"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "l0_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.133225 0.068 -0.0135
+        rotation 0 -1 0 3.141593
+        children [
+          Shape {
+            appearance DEF l0_material PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF l0 Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/l0.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 0.0255 -0.03
+            }
+            device [
+              RotationalMotor {
+                name "l1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "l1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.0255 -0.03
+              rotation 0 7.446846945286492e-28 1 3.141593
+              children [
+                Connector {
+                  translation 0.18 0 0
+                  rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+                  name "magnet_l"
+                  type "active"
+                }
+                Shape {
+                  appearance DEF l1_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF l1 Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/l1.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 -1 0
+                    anchor 0.15 0.05068 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "l2"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "l2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.15 0.05068 0
+                    rotation 0 7.888609052210282e-30 1 3.141593
+                    children [
+                      Shape {
+                        appearance DEF l2_material PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF l2 Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/l2.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "l2"
+                    boundingObject USE l2
+                    physics Physics {
+                      density -1
+                      mass 0.252
+                      centerOfMass [
+                        0.037121 0.013604 0
+                      ]
+                      inertiaMatrix [
+                        2.669e-05 0.00024862 0.00025306
+                        3.4523e-05 5.4659e-21 -4.2579e-21
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "l1"
+              boundingObject USE l1
+              physics Physics {
+                density -1
+                mass 0.242
+                centerOfMass [
+                  0.053294 0.007328 0
+                ]
+                inertiaMatrix [
+                  2.796e-05 0.00041328 0.00039365
+                  2.0282e-05 -5.6835e-20 2.2809e-21
+                ]
+              }
+            }
+          }
+        ]
+        name "l0"
+        boundingObject USE l0
+        physics Physics {
+          density -1
+          mass 0.032137
+          centerOfMass [
+            0 0 -0.015703
+          ]
+          inertiaMatrix [
+            1.701143e-05 2.237393e-05 1.179923e-05
+            3.469494e-20 -4.538597e-22 -2.027934e-22
+          ]
+        }
+      }
+    }
+    Solid {
+      translation 0.125575 0 -0.0525
+      rotation 0.5773502691896258 0.5773502691896258 0.5773502691896258 2.094395
+      children [
+        Shape {
+          appearance DEF armbase_material PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry DEF armbase Mesh {
+            url [
+              "../protos/Manipulator_Vlink/meshes/armbase.STL"
+            ]
+          }
+        }
+      ]
+      name "armbase"
+      boundingObject USE armbase
+      physics Physics {
+        density -1
+        mass 0.384
+        centerOfMass [
+          0 0.010012 0.002705
+        ]
+        inertiaMatrix [
+          7.0477e-05 0.00069458 0.00065488
+          -3.3653e-20 3.9496e-18 -5.1152e-06
+        ]
+      }
+    }
+  ]
+  name "ManipulatorVlink(1)"
+  boundingObject USE base_link
+  physics Physics {
+    density -1
+    mass 4.563502
+    centerOfMass [
+      0 0 0
+    ]
+    inertiaMatrix [
+      0.02809845 0.01694779 0.03767831
+      7.967977e-17 1.040387e-20 1.0888e-18
+    ]
+  }
+  controller "SVlink"
+}
+Robot {
+  children [
+    Emitter {
+      rotation -0.5773502691896258 -0.5773502691896258 -0.5773502691896258 2.0943951023931957
+      channel 1
+    }
+  ]
+  name "supervisor"
+  controller "Vlink_driver"
+  supervisor TRUE
+}

@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-1-g15f4949  Build Version: 1.6.7594.29634
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="整机1">
+  <link
+    name="body">
+    <inertial>
+      <origin
+        xyz="0.0040111 -0.005863 0.314"
+        rpy="0 0 0" />
+      <mass
+        value="4.5635" />
+      <inertia
+        ixx="0.028108"
+        ixy="-3.8467E-05"
+        ixz="-2.9584E-18"
+        iyy="0.037678"
+        iyz="-0.00023328"
+        izz="0.016957" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/body.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/body.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="thigh_lf">
+    <inertial>
+      <origin
+        xyz="-7.7195E-17 -0.061407 0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.06" />
+      <inertia
+        ixx="0.00015591"
+        ixy="8.5854E-21"
+        ixz="-1.2036E-22"
+        iyy="1.1351E-05"
+        iyz="-4.999E-22"
+        izz="0.00016594" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_lf"
+    type="continuous">
+    <origin
+      xyz="-0.038414 -0.471 -0.006591"
+      rpy="1.5708 1.5708 0" />
+    <parent
+      link="body" />
+    <child
+      link="thigh_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg_lf">
+    <inertial>
+      <origin
+        xyz="0 -0.10565 0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.0763" />
+      <inertia
+        ixx="0.00043722"
+        ixy="8.4703E-21"
+        ixz="-6.7631E-22"
+        iyy="7.4436E-06"
+        iyz="-1.4642E-21"
+        izz="0.00044298" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0.0115"
+      rpy="0 0 2.4727" />
+    <parent
+      link="thigh_lf" />
+    <child
+      link="leg_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_lf">
+    <inertial>
+      <origin
+        xyz="-2.7756E-17 2.7756E-17 -0.02075"
+        rpy="0 0 0" />
+      <mass
+        value="0.52195" />
+      <inertia
+        ixx="0.00044145"
+        ixy="0"
+        ixz="0"
+        iyy="0.00044145"
+        iyz="-1.1093E-36"
+        izz="0.00073308" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_lf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_lf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_lf"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -0.90187" />
+    <parent
+      link="leg_lf" />
+    <child
+      link="wheel_lf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh_lb">
+    <inertial>
+      <origin
+        xyz="-1.301E-17 -0.061407 0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.06" />
+      <inertia
+        ixx="0.00015591"
+        ixy="3.4782E-21"
+        ixz="-7.1176E-24"
+        iyy="1.1351E-05"
+        iyz="5.4772E-22"
+        izz="0.00016594" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_lb"
+    type="continuous">
+    <origin
+      xyz="0.056586 -0.441 -0.0046442"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="body" />
+    <child
+      link="thigh_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="leg_lb">
+    <inertial>
+      <origin
+        xyz="1.6653E-16 -0.12673 -0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.075" />
+      <inertia
+        ixx="0.00055399"
+        ixy="1.7745E-19"
+        ixz="-1.838E-21"
+        iyy="9.4376E-06"
+        iyz="1.0739E-21"
+        izz="0.00056177" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0"
+      rpy="0 0 -2.4623" />
+    <parent
+      link="thigh_lb" />
+    <child
+      link="leg_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_lb">
+    <inertial>
+      <origin
+        xyz="2.7756E-17 -2.7756E-17 0.02075"
+        rpy="0 0 0" />
+      <mass
+        value="0.52195" />
+      <inertia
+        ixx="0.00044145"
+        ixy="0"
+        ixz="0"
+        iyy="0.00044145"
+        iyz="-1.1093E-36"
+        izz="0.00073308" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_lb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_lb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_lb"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 0.89149" />
+    <parent
+      link="leg_lb" />
+    <child
+      link="wheel_lb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh_rf">
+    <inertial>
+      <origin
+        xyz="2.2551E-17 -0.061407 0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.06" />
+      <inertia
+        ixx="0.00015591"
+        ixy="7.2401E-20"
+        ixz="1.01E-20"
+        iyy="1.1351E-05"
+        iyz="-2.7928E-22"
+        izz="0.00016594" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_rf"
+    type="continuous">
+    <origin
+      xyz="-0.038414 -0.1455 -0.010481"
+      rpy="1.5708 1.5708 0" />
+    <parent
+      link="body" />
+    <child
+      link="thigh_rf" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="leg_rf">
+    <inertial>
+      <origin
+        xyz="-5.5511E-17 -0.10565 -0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.0763" />
+      <inertia
+        ixx="0.00043722"
+        ixy="-4.6163E-20"
+        ixz="3.4454E-22"
+        iyy="7.4436E-06"
+        iyz="-4.1878E-19"
+        izz="0.00044298" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0"
+      rpy="0 0 2.4715" />
+    <parent
+      link="thigh_rf" />
+    <child
+      link="leg_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_rf">
+    <inertial>
+      <origin
+        xyz="4.1633E-17 0 0.02075"
+        rpy="0 0 0" />
+      <mass
+        value="0.52195" />
+      <inertia
+        ixx="0.00044145"
+        ixy="-2.7105E-20"
+        ixz="-2.0781E-20"
+        iyy="0.00044145"
+        iyz="-9.4571E-21"
+        izz="0.00073308" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_rf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_rf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_rf"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 -0.51451" />
+    <parent
+      link="leg_rf" />
+    <child
+      link="wheel_rf" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="thigh_rb">
+    <inertial>
+      <origin
+        xyz="1.7347E-18 -0.061407 0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.06" />
+      <inertia
+        ixx="0.00015591"
+        ixy="-1.7635E-20"
+        ixz="-3.5941E-21"
+        iyy="1.1351E-05"
+        iyz="9.1036E-21"
+        izz="0.00016594" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/thigh_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="hip_rb"
+    type="continuous">
+    <origin
+      xyz="0.056586 -0.1755 -0.0089859"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="body" />
+    <child
+      link="thigh_rb" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="leg_rb">
+    <inertial>
+      <origin
+        xyz="0 -0.12673 0.00575"
+        rpy="0 0 0" />
+      <mass
+        value="0.075" />
+      <inertia
+        ixx="0.00055399"
+        ixy="-2.5877E-19"
+        ixz="-2.7261E-21"
+        iyy="9.4376E-06"
+        iyz="-7.0383E-19"
+        izz="0.00056177" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/leg_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="knee_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.14 0.0115"
+      rpy="0 0 -2.4635" />
+    <parent
+      link="thigh_rb" />
+    <child
+      link="leg_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="wheel_rb">
+    <inertial>
+      <origin
+        xyz="6.9389E-18 -5.5511E-17 -0.02075"
+        rpy="0 0 0" />
+      <mass
+        value="0.52195" />
+      <inertia
+        ixx="0.00044145"
+        ixy="-2.7105E-20"
+        ixz="-2.0781E-20"
+        iyy="0.00044145"
+        iyz="-9.4571E-21"
+        izz="0.00073308" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_rb.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://整机1/meshes/wheel_rb.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_rb"
+    type="continuous">
+    <origin
+      xyz="0 -0.24 0"
+      rpy="0 0 1.2788" />
+    <parent
+      link="leg_rb" />
+    <child
+      link="wheel_rb" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

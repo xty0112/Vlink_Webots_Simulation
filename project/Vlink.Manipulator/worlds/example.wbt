@@ -1,0 +1,348 @@
+#VRML_SIM R2023a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/RectangleArena.proto"
+
+WorldInfo {
+  basicTimeStep 8
+}
+Viewpoint {
+  orientation -0.0360166609234563 -0.003939215294706113 0.9993434258145628 3.359407280897721
+  position 1.560987077592293 0.580815292253938 0.30736317880609987
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+Robot {
+  translation 1.90976e-06 -0.19 0.34
+  rotation 0.5773512691860505 -0.5773472691841857 -0.5773522691865168 -2.094395307179586
+  children [
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.133225 -0.068 -0.0135
+      }
+      device [
+        RotationalMotor {
+          name "r0"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "r0_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.13322525807019897 -0.06800000000106193 -0.01350000000061131
+        rotation -1 3.2721378170048034e-09 6.0669187088601925e-09 3.141592307179535
+        children [
+          Shape {
+            appearance DEF r0_material PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF r0 Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/r0.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 0.0255 -0.03
+            }
+            device [
+              RotationalMotor {
+                name "r1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "r1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.0255 -0.03
+              rotation 1 9.08513229000404e-18 -3.469446951953666e-18 3.141593
+              children [
+                Shape {
+                  appearance DEF r1_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF r1 Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/r1.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 -1 0
+                    anchor 0.15 0.05068 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "r2"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "r2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.15 0.05068 0
+                    rotation 1.110223024625173e-16 1.2071989003140735e-16 1 3.141593
+                    children [
+                      Shape {
+                        appearance DEF r2_material PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF r2 Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/r2.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "r2"
+                    boundingObject USE r2
+                    physics Physics {
+                      density -1
+                      mass 0.252
+                      centerOfMass [
+                        0.037121 0.013604 0
+                      ]
+                      inertiaMatrix [
+                        2.669e-05 0.00024862 0.00025306
+                        3.4523e-05 4.1921e-22 -2.6906e-21
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "r1"
+              boundingObject USE r1
+              physics Physics {
+                density -1
+                mass 0.242
+                centerOfMass [
+                  0.053294 0.007328 0
+                ]
+                inertiaMatrix [
+                  2.796e-05 0.00041328 0.00039365
+                  2.0282e-05 -1.5298e-20 7.5624e-22
+                ]
+              }
+            }
+          }
+        ]
+        name "r0"
+        boundingObject USE r0
+        physics Physics {
+          density -1
+          mass 0.032137
+          centerOfMass [
+            0 0 -0.015703
+          ]
+          inertiaMatrix [
+            1.7011e-05 2.2374e-05 1.1799e-05
+            3.5016e-20 -1.9417e-21 3.8495e-22
+          ]
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 0 1
+        anchor 0.133225 0.068 -0.0135
+      }
+      device [
+        RotationalMotor {
+          name "l0"
+          maxTorque 10000
+        }
+        PositionSensor {
+          name "l0_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.13322525807019892 0.06799999999894549 -0.013500000000611285
+        rotation -3.270566428792361e-09 1 2.458401476025248e-14 3.1415923193134327
+        children [
+          Shape {
+            appearance DEF l0_material PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF l0 Mesh {
+              url [
+                "../protos/Manipulator_Vlink/meshes/l0.STL"
+              ]
+            }
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              axis 0 -1 0
+              anchor 0 0.0255 -0.03
+            }
+            device [
+              RotationalMotor {
+                name "l1"
+                maxTorque 10000
+              }
+              PositionSensor {
+                name "l1_sensor"
+              }
+            ]
+            endPoint Solid {
+              translation 0 0.0255 -0.03
+              rotation -3.469446951953666e-18 -8.250751897399339e-18 1 3.141593
+              children [
+                Shape {
+                  appearance DEF l1_material PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF l1 Mesh {
+                    url [
+                      "../protos/Manipulator_Vlink/meshes/l1.STL"
+                    ]
+                  }
+                }
+                HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 -1 0
+                    anchor 0.15 0.05068 0
+                  }
+                  device [
+                    RotationalMotor {
+                      name "l2"
+                      maxTorque 10000
+                    }
+                    PositionSensor {
+                      name "l2_sensor"
+                    }
+                  ]
+                  endPoint Solid {
+                    translation 0.15 0.05068 0
+                    rotation 5.551115123125865e-17 -1.0551194285904618e-16 1 3.141593
+                    children [
+                      Shape {
+                        appearance DEF l2_material PBRAppearance {
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry DEF l2 Mesh {
+                          url [
+                            "../protos/Manipulator_Vlink/meshes/l2.STL"
+                          ]
+                        }
+                      }
+                    ]
+                    name "l2"
+                    boundingObject USE l2
+                    physics Physics {
+                      density -1
+                      mass 0.252
+                      centerOfMass [
+                        0.037121 0.013604 0
+                      ]
+                      inertiaMatrix [
+                        2.669e-05 0.00024862 0.00025306
+                        3.4523e-05 5.4659e-21 -4.2579e-21
+                      ]
+                    }
+                  }
+                }
+              ]
+              name "l1"
+              boundingObject USE l1
+              physics Physics {
+                density -1
+                mass 0.242
+                centerOfMass [
+                  0.053294 0.007328 0
+                ]
+                inertiaMatrix [
+                  2.796e-05 0.00041328 0.00039365
+                  2.0282e-05 -5.6835e-20 2.2809e-21
+                ]
+              }
+            }
+          }
+        ]
+        name "l0"
+        boundingObject USE l0
+        physics Physics {
+          density -1
+          mass 0.032137
+          centerOfMass [
+            0 0 -0.015703
+          ]
+          inertiaMatrix [
+            1.701143e-05 2.237393e-05 1.179923e-05
+            3.469494e-20 -4.538597e-22 -2.027934e-22
+          ]
+        }
+      }
+    }
+    Solid {
+      translation 0.125575 0 -0.0525
+      rotation 0.5773502691896258 0.5773502691896258 0.5773502691896258 2.094395
+      children [
+        Shape {
+          appearance DEF armbase_material PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry DEF armbase Mesh {
+            url [
+              "../protos/Manipulator_Vlink/meshes/armbase.STL"
+            ]
+          }
+        }
+      ]
+      name "armbase"
+      boundingObject USE armbase
+      physics Physics {
+        density -1
+        mass 0.384
+        centerOfMass [
+          0 0.010012 0.002705
+        ]
+        inertiaMatrix [
+          7.0477e-05 0.00069458 0.00065488
+          -3.3653e-20 3.9496e-18 -5.1152e-06
+        ]
+      }
+    }
+  ]
+  name "ManipulatorVlink"
+  controller "m_controller"
+}
+Solid {
+  translation 0 0.15 0.2
+  scale 3 3 3
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.666667 1 0.498039
+        metalness 0
+      }
+      geometry Box {
+        size 0.1 0.1 0.1
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.1 0.1 0.1
+  }
+  physics Physics {
+    density 10000
+  }
+}

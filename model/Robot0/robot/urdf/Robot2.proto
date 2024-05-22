@@ -1,0 +1,550 @@
+#VRML_SIM R2022b utf8
+# license: Apache License 2.0
+# license url: http://www.apache.org/licenses/LICENSE-2.0
+# This is a proto file for Webots for the Robot
+# Extracted from: /media/tomatoo/新加卷/Robot0/robot/urdf/robot.urdf
+
+PROTO Robot [
+  field  SFVec3f     translation     0 0 0
+  field  SFRotation  rotation        0 0 1 0
+  field  SFString    name            "Robot"  # Is `Robot.name`.
+  field  SFString    controller      "void"   # Is `Robot.controller`.
+  field  MFString    controllerArgs  []       # Is `Robot.controllerArgs`.
+  field  SFString    customData      ""       # Is `Robot.customData`.
+  field  SFBool      supervisor      FALSE    # Is `Robot.supervisor`.
+  field  SFBool      synchronization TRUE     # Is `Robot.synchronization`.
+  field  SFBool      selfCollision   FALSE    # Is `Robot.selfCollision`.
+]
+{
+  Robot {
+    translation IS translation
+    rotation IS rotation
+    controller IS controller
+    controllerArgs IS controllerArgs
+    customData IS customData
+    supervisor IS supervisor
+    synchronization IS synchronization
+    selfCollision IS selfCollision
+    children [
+      Shape {
+        appearance DEF base_link_material PBRAppearance {
+          baseColor 0.792160 0.819610 0.933330
+          roughness 1.000000
+          metalness 0
+        }
+        geometry DEF base_link Mesh {
+          url "/media/tomatoo/新加卷/Robot0/robot/meshes/base_link.STL"
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -0.000004 1.000000 -0.000000
+          anchor 0.042425 0.157000 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "hip_lf"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "hip_lf_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.042425 0.157000 0.000000
+          rotation 0.577350 -0.577350 0.577352 2.094399
+          children [
+            Shape {
+              appearance DEF hip2thigh_lf_material PBRAppearance {
+                baseColor 0.792160 0.819610 0.933330
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF hip2thigh_lf Mesh {
+                url "/media/tomatoo/新加卷/Robot0/robot/meshes/hip2thigh_lf.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000000 -0.000000 1.000000
+                anchor 0.000000 -0.140000 -0.011500
+              }
+              device [
+                RotationalMotor {
+                  name "knee_lf"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "knee_lf_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 -0.140000 -0.011500
+                rotation 0.000000 0.000000 -1.000000 2.467500
+                children [
+                  Shape {
+                    appearance DEF thigh2leg_lf_material PBRAppearance {
+                      baseColor 0.792160 0.819610 0.933330
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF thigh2leg_lf Mesh {
+                      url "/media/tomatoo/新加卷/Robot0/robot/meshes/thigh2leg_lf.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 0.000000 1.000000
+                      anchor 0.000000 -0.240000 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "foot_lf"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "foot_lf_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.000000 -0.240000 0.000000
+                      rotation 0.000000 0.000000 1.000000 0.827380
+                      children [
+                        Shape {
+                          appearance DEF leg2wheel_lf_material PBRAppearance {
+                            baseColor 0.792160 0.819610 0.933330
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF leg2wheel_lf Mesh {
+                            url "/media/tomatoo/新加卷/Robot0/robot/meshes/leg2wheel_lf.STL"
+                          }
+                        }
+                      ]
+                      name "leg2wheel_lf"
+                      boundingObject USE leg2wheel_lf
+                      physics Physics {
+                        density -1
+                        mass 0.521950
+                        centerOfMass [ 0.000000 -0.000000 0.020750 ]
+                        inertiaMatrix [
+                          4.414500e-04 4.414500e-04 7.330800e-04
+                          -1.694100e-21 2.074700e-18 -3.382300e-20
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "thigh2leg_lf"
+                boundingObject USE thigh2leg_lf
+                physics Physics {
+                  density -1
+                  mass 0.076300
+                  centerOfMass [ 0.000000 -0.105650 -0.005750 ]
+                  inertiaMatrix [
+                    4.372200e-04 7.443600e-06 4.429800e-04
+                    1.694100e-21 1.950700e-20 1.460100e-18
+                  ]
+                }
+              }
+            }
+          ]
+          name "hip2thigh_lf"
+          boundingObject USE hip2thigh_lf
+          physics Physics {
+            density -1
+            mass 0.060000
+            centerOfMass [ 0.000000 -0.061407 -0.005750 ]
+            inertiaMatrix [
+              1.559100e-04 1.135100e-05 1.659400e-04
+              2.946100e-21 -9.350500e-21 -7.895300e-19
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000004 1.000000 -0.000000
+          anchor -0.052575 0.127000 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "hip_lb"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "hip_lb_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.052575 0.127000 0.000000
+          rotation 0.577350 0.577350 -0.577352 2.094399
+          children [
+            Shape {
+              appearance DEF hip2thigh_lb_material PBRAppearance {
+                baseColor 0.792157 0.819608 0.933333
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF hip2thigh_lb Mesh {
+                url "/media/tomatoo/新加卷/Robot0/robot/meshes/hip2thigh_lb.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000000 0.000000 1.000000
+                anchor 0.000000 -0.140000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "knee_lb"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "knee_lb_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 -0.140000 0.000000
+                rotation 0.000000 0.000000 1.000000 2.467462
+                children [
+                  Shape {
+                    appearance DEF thigh2leg_lb_material PBRAppearance {
+                      baseColor 0.792157 0.819608 0.933333
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF thigh2leg_lb Mesh {
+                      url "/media/tomatoo/新加卷/Robot0/robot/meshes/thigh2leg_lb.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 0.000000 1.000000
+                      anchor 0.000000 -0.240000 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "foot_lb"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "foot_lb_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.000000 -0.240000 0.000000
+                      rotation 0.000000 0.000000 -1.000000 0.965954
+                      children [
+                        Shape {
+                          appearance DEF leg2wheel_lb_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF leg2wheel_lb Mesh {
+                            url "/media/tomatoo/新加卷/Robot0/robot/meshes/leg2wheel_lb.STL"
+                          }
+                        }
+                      ]
+                      name "leg2wheel_lb"
+                      boundingObject USE leg2wheel_lb
+                      physics Physics {
+                        density -1
+                        mass 0.521950
+                        centerOfMass [ -0.000000 -0.000000 -0.020750 ]
+                        inertiaMatrix [
+                          4.414501e-04 4.414501e-04 7.330787e-04
+                          -1.694066e-21 2.074664e-18 -3.382317e-20
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "thigh2leg_lb"
+                boundingObject USE thigh2leg_lb
+                physics Physics {
+                  density -1
+                  mass 0.075000
+                  centerOfMass [ 0.000000 -0.126725 0.005750 ]
+                  inertiaMatrix [
+                    5.539879e-04 9.437568e-06 5.617723e-04
+                    -5.844527e-20 1.651993e-20 -3.300675e-18
+                  ]
+                }
+              }
+            }
+          ]
+          name "hip2thigh_lb"
+          boundingObject USE hip2thigh_lb
+          physics Physics {
+            density -1
+            mass 0.054000
+            centerOfMass [ -0.000000 -0.061407 -0.005750 ]
+            inertiaMatrix [
+              1.403148e-04 1.021601e-05 1.493405e-04
+              -7.432357e-21 6.140970e-21 6.952440e-19
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis 0.000004 -1.000000 0.000000
+          anchor 0.042425 -0.157000 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "hip_rf"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "hip_rf_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation 0.042425 -0.157000 0.000000
+          rotation 0.577350 -0.577350 0.577352 2.094399
+          children [
+            Shape {
+              appearance DEF hip2thigh_rf_material PBRAppearance {
+                baseColor 0.792157 0.819608 0.933333
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF hip2thigh_rf Mesh {
+                url "/media/tomatoo/新加卷/Robot0/robot/meshes/hip2thigh_rf.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000000 -0.000000 1.000000
+                anchor 0.000000 -0.140000 0.011500
+              }
+              device [
+                RotationalMotor {
+                  name "knee_rf"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "knee_rf_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 -0.140000 0.011500
+                rotation 0.000000 0.000000 -1.000000 2.467462
+                children [
+                  Shape {
+                    appearance DEF thigh2leg_rf_material PBRAppearance {
+                      baseColor 0.792157 0.819608 0.933333
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF thigh2leg_rf Mesh {
+                      url "/media/tomatoo/新加卷/Robot0/robot/meshes/thigh2leg_rf.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 0.000000 1.000000
+                      anchor 0.000000 -0.240000 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "foot_rf"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "foot_rf_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.000000 -0.240000 0.000000
+                      rotation 0.000000 0.000000 -1.000000 1.158700
+                      children [
+                        Shape {
+                          appearance DEF leg2wheel_rf_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF leg2wheel_rf Mesh {
+                            url "/media/tomatoo/新加卷/Robot0/robot/meshes/leg2wheel_rf.STL"
+                          }
+                        }
+                      ]
+                      name "leg2wheel_rf"
+                      boundingObject USE leg2wheel_rf
+                      physics Physics {
+                        density -1
+                        mass 0.521950
+                        centerOfMass [ 0.000000 -0.000000 -0.020750 ]
+                        inertiaMatrix [
+                          4.414501e-04 4.414501e-04 7.330787e-04
+                          -6.776264e-20 -9.002655e-19 1.862022e-18
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "thigh2leg_rf"
+                boundingObject USE thigh2leg_rf
+                physics Physics {
+                  density -1
+                  mass 0.076300
+                  centerOfMass [ 0.000000 -0.105648 0.005750 ]
+                  inertiaMatrix [
+                    4.372184e-04 7.443633e-06 4.429802e-04
+                    -5.844527e-20 2.475712e-20 2.373019e-18
+                  ]
+                }
+              }
+            }
+          ]
+          name "hip2thigh_rf"
+          boundingObject USE hip2thigh_rf
+          physics Physics {
+            density -1
+            mass 0.060000
+            centerOfMass [ 0.000000 -0.061407 0.005750 ]
+            inertiaMatrix [
+              1.559065e-04 1.135121e-05 1.659352e-04
+              9.733237e-21 3.735747e-24 -1.085049e-18
+            ]
+          }
+        }
+      }
+      HingeJoint {
+        jointParameters HingeJointParameters {
+          axis -0.000000 -1.000000 -0.000000
+          anchor -0.052575 -0.127000 0.000000
+        }
+        device [
+          RotationalMotor {
+            name "hip_rb"
+            maxTorque 10000
+          }
+          PositionSensor {
+            name "hip_rb_sensor"
+          }
+        ]
+        endPoint Solid {
+          translation -0.052575 -0.127000 0.000000
+          rotation 0.577350 0.577350 -0.577350 2.094395
+          children [
+            Shape {
+              appearance DEF hip2thigh_rb_material PBRAppearance {
+                roughness 1.000000
+                metalness 0
+              }
+              geometry DEF hip2thigh_rb Mesh {
+                url "/media/tomatoo/新加卷/Robot0/robot/meshes/hip2thigh_rb.STL"
+              }
+            }
+            HingeJoint {
+              jointParameters HingeJointParameters {
+                axis 0.000000 0.000000 1.000000
+                anchor 0.000000 -0.140000 0.000000
+              }
+              device [
+                RotationalMotor {
+                  name "knee_rb"
+                  maxTorque 10000
+                }
+                PositionSensor {
+                  name "knee_rb_sensor"
+                }
+              ]
+              endPoint Solid {
+                translation 0.000000 -0.140000 0.000000
+                rotation 0.000000 0.000000 1.000000 2.467462
+                children [
+                  Shape {
+                    appearance DEF thigh2leg_rb_material PBRAppearance {
+                      baseColor 0.792157 0.819608 0.933333
+                      roughness 1.000000
+                      metalness 0
+                    }
+                    geometry DEF thigh2leg_rb Mesh {
+                      url "/media/tomatoo/新加卷/Robot0/robot/meshes/thigh2leg_rb.STL"
+                    }
+                  }
+                  HingeJoint {
+                    jointParameters HingeJointParameters {
+                      axis 0.000000 -0.000000 1.000000
+                      anchor 0.000000 -0.240000 0.000000
+                    }
+                    device [
+                      RotationalMotor {
+                        name "foot_rb"
+                        maxTorque 10000
+                      }
+                      PositionSensor {
+                        name "foot_rb_sensor"
+                      }
+                    ]
+                    endPoint Solid {
+                      translation 0.000000 -0.240000 0.000000
+                      rotation 0.000000 0.000000 -1.000000 2.952032
+                      children [
+                        Shape {
+                          appearance DEF leg2wheel_rb_material PBRAppearance {
+                            baseColor 0.792157 0.819608 0.933333
+                            roughness 1.000000
+                            metalness 0
+                          }
+                          geometry DEF leg2wheel_rb Mesh {
+                            url "/media/tomatoo/新加卷/Robot0/robot/meshes/leg2wheel_rb.STL"
+                          }
+                        }
+                      ]
+                      name "leg2wheel_rb"
+                      boundingObject USE leg2wheel_rb
+                      physics Physics {
+                        density -1
+                        mass 0.521950
+                        centerOfMass [ -0.000000 0.000000 0.020750 ]
+                        inertiaMatrix [
+                          4.414501e-04 4.414501e-04 7.330787e-04
+                          -6.776264e-20 -9.002655e-19 1.862022e-18
+                        ]
+                      }
+                    }
+                  }
+                ]
+                name "thigh2leg_rb"
+                boundingObject USE thigh2leg_rb
+                physics Physics {
+                  density -1
+                  mass 0.075000
+                  centerOfMass [ 0.000000 -0.126725 -0.005750 ]
+                  inertiaMatrix [
+                    5.539879e-04 9.437568e-06 5.617723e-04
+                    4.616330e-20 3.550509e-20 -3.085322e-18
+                  ]
+                }
+              }
+            }
+          ]
+          name "hip2thigh_rb"
+          boundingObject USE hip2thigh_rb
+          physics Physics {
+            density -1
+            mass 0.000000
+          }
+        }
+      }
+    ]
+    name IS name
+    boundingObject USE base_link
+    physics Physics {
+      density -1
+      mass 4.563500
+      centerOfMass [ 0.000000 0.000000 0.000000 ]
+      inertiaMatrix [
+        2.809800e-02 3.767800e-02 1.694800e-02
+        7.172500e-20 -7.933000e-17 1.805400e-19
+      ]
+    }
+  }
+}
